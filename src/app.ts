@@ -8,22 +8,23 @@ console.log("hello");
 const csvFilePath = './testRulesEngine.csv';
 
 const factsHolder = {
-    option: 'REGULAR',
+    option: "REGULAR",
 };
 
-const importsHolder = { 
-    TicketTypes: {
-        REGULAR: 'REGULAR',
-        SEASON: 'SEASON',
-    },
-};
+// const importsHolder = { 
+//     TicketTypes: {
+//         REGULAR: 'REGULAR',
+//         SEASON: 'SEASON',
+//     },
+// };
 
 
 
 (async () => {
     try {
         const engine = await trool(csvFilePath);
-        const updatedFacts = engine.applyRules(factsHolder, importsHolder);
+        const updatedFacts = engine.applyRules(factsHolder);
+        console.log(updatedFacts);
         logger.info(engine.decisionTables);
     } catch (err) {
         console.log(err);

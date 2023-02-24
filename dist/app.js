@@ -17,18 +17,19 @@ const jet_logger_1 = __importDefault(require("jet-logger"));
 console.log("hello");
 const csvFilePath = './testRulesEngine.csv';
 const factsHolder = {
-    option: 'REGULAR',
+    option: "REGULAR",
 };
-const importsHolder = {
-    TicketTypes: {
-        REGULAR: 'REGULAR',
-        SEASON: 'SEASON',
-    },
-};
+// const importsHolder = { 
+//     TicketTypes: {
+//         REGULAR: 'REGULAR',
+//         SEASON: 'SEASON',
+//     },
+// };
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const engine = yield (0, trool_1.default)(csvFilePath);
-        const updatedFacts = engine.applyRules(factsHolder, importsHolder);
+        const updatedFacts = engine.applyRules(factsHolder);
+        console.log(updatedFacts);
         jet_logger_1.default.info(engine.decisionTables);
     }
     catch (err) {
