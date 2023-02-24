@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const trool_1 = __importDefault(require("trool"));
 const jet_logger_1 = __importDefault(require("jet-logger"));
 console.log("hello");
-const csvFilePath = './testRulesEngine.csv';
+const csvFilePath = 'C:/Users/Paweł/Desktop/testRulesEngine/testRulesEngine.csv';
 const factsHolder = {
-    Tickets: 'Regular',
+    option: 'Regular',
 };
 const importsHolder = {
     TicketTypes: {
@@ -27,15 +27,13 @@ const importsHolder = {
 };
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log('git');
         const engine = yield (0, trool_1.default)(csvFilePath);
-        console.log('git2');
-        console.log(engine);
         const updatedFacts = engine.applyRules(factsHolder, importsHolder);
         console.log(updatedFacts);
-        jet_logger_1.default.info(engine.decisionTables);
+        // logger.info(engine.decisionTables);
     }
     catch (err) {
+        console.log(err);
         jet_logger_1.default.err(err.message);
     }
 }))();
