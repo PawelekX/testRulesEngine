@@ -5,15 +5,15 @@ import logger from 'jet-logger';
 console.log("hello");
 
 
-const csvFilePath = 'C:/Users/Paweł/Desktop/testRulesEngine/testRulesEngine.csv';
+const csvFilePath = './testRulesEngine.csv';
 
 const factsHolder = {
-    option: 'Regular',
+    option: 'REGULAR',
 };
 
 const importsHolder = { 
     TicketTypes: {
-        REGULAR: 'Regular',
+        REGULAR: 'REGULAR',
         SEASON: 'SEASON',
     },
 };
@@ -24,8 +24,7 @@ const importsHolder = {
     try {
         const engine = await trool(csvFilePath);
         const updatedFacts = engine.applyRules(factsHolder, importsHolder);
-        console.log(updatedFacts);
-        // logger.info(engine.decisionTables);
+        logger.info(engine.decisionTables);
     } catch (err) {
         console.log(err);
         logger.err(err.message);

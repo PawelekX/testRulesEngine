@@ -15,13 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const trool_1 = __importDefault(require("trool"));
 const jet_logger_1 = __importDefault(require("jet-logger"));
 console.log("hello");
-const csvFilePath = 'C:/Users/Paweł/Desktop/testRulesEngine/testRulesEngine.csv';
+const csvFilePath = './testRulesEngine.csv';
 const factsHolder = {
-    option: 'Regular',
+    option: 'REGULAR',
 };
 const importsHolder = {
     TicketTypes: {
-        REGULAR: 'Regular',
+        REGULAR: 'REGULAR',
         SEASON: 'SEASON',
     },
 };
@@ -29,8 +29,7 @@ const importsHolder = {
     try {
         const engine = yield (0, trool_1.default)(csvFilePath);
         const updatedFacts = engine.applyRules(factsHolder, importsHolder);
-        console.log(updatedFacts);
-        // logger.info(engine.decisionTables);
+        jet_logger_1.default.info(engine.decisionTables);
     }
     catch (err) {
         console.log(err);
