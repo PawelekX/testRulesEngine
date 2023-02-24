@@ -1,0 +1,16 @@
+{
+  "name": "testrulesengine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "npx tsc && node dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "trool": "^2.0.7"
+  }
+}

@@ -1,0 +1,4 @@
+Table: Tickets;Condition;Action
+;option == $param;price = $param
+Set Price - Regular;TicketTypes.REGULAR;70
+Set Price - Season;TicketTypes.SEASON;600
