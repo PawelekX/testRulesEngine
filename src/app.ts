@@ -1,33 +1,11 @@
-import trool from 'trool';
 import logger from 'jet-logger';
+import getMedicines from './getMedicines';
+import Patient from './Patient';
 
-
-console.log("hello");
-
-
-const csvFilePath = './testRulesEngine.csv';
-
-const factsHolder = {
-    option: "REGULAR",
-};
-
-// const importsHolder = { 
-//     TicketTypes: {
-//         REGULAR: 'REGULAR',
-//         SEASON: 'SEASON',
-//     },
-// };
-
-
+const patient = new Patient(13,0);
 
 (async () => {
-    try {
-        const engine = await trool(csvFilePath);
-        const updatedFacts = engine.applyRules(factsHolder);
-        console.log(updatedFacts);
-        logger.info(engine.decisionTables);
-    } catch (err) {
-        console.log(err);
-        logger.err(err.message);
-    }
+  const p = (total: string) => logger.info('Medicines ' + total + '\n')
+  let medicinesToTake = await getMedicines(patient);
+  p(medicinesToTake);
 })();
