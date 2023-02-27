@@ -13,12 +13,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jet_logger_1 = __importDefault(require("jet-logger"));
-const getMedicines_1 = __importDefault(require("./getMedicines"));
-const Patient_1 = __importDefault(require("./Patient"));
-const patient = new Patient_1.default(13, 0);
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    const p = (total) => jet_logger_1.default.info('Medicines ' + total + '\n');
-    let medicinesToTake = yield (0, getMedicines_1.default)(patient);
-    p(medicinesToTake);
-}))();
-//# sourceMappingURL=app.js.map
+const trool_1 = __importDefault(require("trool"));
+const CSV_FILE_PATH = './MedicineRules.csv';
+function getMedicines(Patient) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let medicines = 0;
+        try {
+            const facts = _setupFactsHolder(Patient), engine = yield (0, trool_1.default)(CSV_FILE_PATH);
+            const updatedFacts = engine.applyRules(facts);
+            medicines = facts.Patients.medicines;
+        }
+        catch (err) {
+            jet_logger_1.default.err(err, true);
+            medicines = -1;
+        }
+        return ('wez tyle lekow ' + medicines);
+    });
+}
+function _setupFactsHolder(Patients) {
+    return { Patients };
+}
+exports.default = getMedicines;
+//# sourceMappingURL=getMedicines.js.map

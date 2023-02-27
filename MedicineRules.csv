@@ -1,0 +1,6 @@
+,,,,,,,
+Table: Patients,Condition,Condition,Action
+,sugar >= $param,sugar < $param,takeMedicines($param),
+Take medicines - 0,120,,1,
+Take medicines - 1,,120,0,
+,,,,,,,
